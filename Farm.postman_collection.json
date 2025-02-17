@@ -1,0 +1,325 @@
+{
+	"info": {
+		"_postman_id": "efba74e4-ef72-40fe-86f5-aa3dd7a85140",
+		"name": "Farm",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32549435"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register Farmer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": \"John\",\r\n    \"password\": \"1234\",\r\n    \"payInfo\": \"????\",\r\n    \"rating\": \"0\",\r\n    \"language\": \"English\",\r\n    \"offers\": [\r\n        {\r\n            \"???\":\"???\"\r\n        }\r\n    ],\r\n    \"address\": [\r\n        {\r\n            \"city\": \"Ashdod\",\r\n            \"street\": \"Ben Gurion\"\r\n            \"building\": \"5\"\r\n            \"latitude\": 37.7749,\r\n            \"longitude\": -122.4194\r\n        }\r\n    ]\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localHost}}/auth/farm/register",
+							"host": [
+								"{{localHost}}"
+							],
+							"path": [
+								"auth",
+								"farm",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": \"John\",\r\n    \"password\": \"1234\",\r\n    \"telephone\": \"0501234567\",\r\n    \"language\": \"English\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localHost}}/auth/user/register",
+							"host": [
+								"{{localHost}}"
+							],
+							"path": [
+								"auth",
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{localHost}}/auth/login\n",
+							"host": [
+								"{{localHost}}"
+							],
+							"path": [
+								"auth",
+								"login\n"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Forget Password",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Get Farm Info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localHost}}/farm/{{farmId}}",
+							"host": [
+								"{{localHost}}"
+							],
+							"path": [
+								"farm",
+								"{{farmId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Farm Info",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{localHost}}/farm/{{farmId}}",
+									"host": [
+										"{{localHost}}"
+									],
+									"path": [
+										"farm",
+										"{{farmId}}"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"login\": \"John\",\r\n    \"raiting\": \"0\",\r\n    \"offers\": [\r\n        {\r\n            \"???\":\"???\"\r\n        }\r\n    ],\r\n    \"adress\": [\r\n        {\r\n            \"city\": \"Ashdod\",\r\n            \"street\": \"Ben Gurion\"\r\n            \"building\": \"5\"\r\n            \"latitude\": 37.7749,\r\n            \"longitude\": -122.4194\r\n        }\r\n    ]\r\n    \r\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Farm Info",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": \"John\",\r\n    \"password\": \"1234\",\r\n    \"payInfo\": \"????\",\r\n    \"raiting\": \"0\",\r\n    \"language\": \"English\",\r\n    \"offers\": [\r\n        {\r\n            \"???\":\"???\"\r\n        }\r\n    ],\r\n    \"adress\": [\r\n        {\r\n            \"city\": \"Ashdod\",\r\n            \"street\": \"Ben Gurion\"\r\n            \"building\": \"5\"\r\n            \"latitude\": 37.7749,\r\n            \"longitude\": -122.4194\r\n        }\r\n    ]\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localHost}}/farm/{{farmId}}",
+							"host": [
+								"{{localHost}}"
+							],
+							"path": [
+								"farm",
+								"{{farmId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Farm Info",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"login\": \"John\",\r\n    \"password\": \"1234\",\r\n    \"payInfo\": \"????\",\r\n    \"raiting\": \"0\",\r\n    \"language\": \"English\",\r\n    \"offers\": [\r\n        {\r\n            \"???\":\"???\"\r\n        }\r\n    ],\r\n    \"adress\": [\r\n        {\r\n            \"city\": \"Ashdod\",\r\n            \"street\": \"Ben Gurion\"\r\n            \"building\": \"5\"\r\n            \"latitude\": 37.7749,\r\n            \"longitude\": -122.4194\r\n        }\r\n    ]\r\n    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{localHost}}/farm/{{farmId}}",
+									"host": [
+										"{{localHost}}"
+									],
+									"path": [
+										"farm",
+										"{{farmId}}"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"login\": \"John\",\r\n    \"raiting\": \"0\",\r\n    \"offers\": [\r\n        {\r\n            \"???\":\"???\"\r\n        }\r\n    ],\r\n    \"adress\": [\r\n        {\r\n            \"city\": \"Ashdod\",\r\n            \"street\": \"Ben Gurion\"\r\n            \"building\": \"5\"\r\n            \"latitude\": 37.7749,\r\n            \"longitude\": -122.4194\r\n        }\r\n    ]\r\n    \r\n}"
+						}
+					]
+				},
+				{
+					"name": "Get User Info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localHost}}/user/{{userId}}",
+							"host": [
+								"{{localHost}}"
+							],
+							"path": [
+								"user",
+								"{{userId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get User Info",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{localHost}}/user/{{userId}}",
+									"host": [
+										"{{localHost}}"
+									],
+									"path": [
+										"user",
+										"{{userId}}"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"login\": \"John\",\r\n    \"telephone\": \"0501234567\",\r\n    \"language\": \"English\"\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Update User Info",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": \"John\",\r\n    \"password\": \"1234\",\r\n    \"telephone\": \"0501234567\",\r\n    \"language\": \"English\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localHost}}/user/{{userId}}",
+							"host": [
+								"{{localHost}}"
+							],
+							"path": [
+								"user",
+								"{{userId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update User Info",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"login\": \"John\",\r\n    \"password\": \"1234\",\r\n    \"telephone\": \"0501234567\",\r\n    \"language\": \"English\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{localHost}}/user/{{userId}}",
+									"host": [
+										"{{localHost}}"
+									],
+									"path": [
+										"user",
+										"{{userId}}"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"login\": \"John\",\r\n    \"telephone\": \"0501234567\",\r\n    \"language\": \"English\"\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Account",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{localHost}}/{{id}}",
+							"host": [
+								"{{localHost}}"
+							],
+							"path": [
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Offers",
+			"item": []
+		},
+		{
+			"name": "Orders",
+			"item": []
+		}
+	],
+	"variable": [
+		{
+			"key": "localHost",
+			"value": "localhost:8081",
+			"type": "default"
+		}
+	]
+}
