@@ -2,6 +2,8 @@ package java55.farm.auth.service;
 
 import java55.farm.auth.dao.AccountRepository;
 import java55.farm.auth.dto.*;
+import java55.farm.auth.model.Farm;
+import java55.farm.auth.model.User;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -14,12 +16,22 @@ public class AuthServiceImpl implements AuthService{
 
     @Override
     public FarmDto registerFarm(FarmRegisterDto farmRegisterDto) {
-        return null;
+        if (accountRepository.existsById(farmRegisterDto.getLogin())){
+            return null;
+        }
+        Farm farm = modelMapper.map(farmRegisterDto, Farm.class);
+        accountRepository.save(farm);
+        return modelMapper.map(farm, FarmDto.class);
     }
 
     @Override
     public UserDto registerUser(UserRegisterDto userRegisterDto) {
-        return null;
+        if (accountRepository.existsById(userRegisterDto.getLogin())){
+            return null;
+        }
+        User user = modelMapper.map(userRegisterDto, User.class);
+        accountRepository.save(user);
+        return modelMapper.map(user, UserDto.class);
     }
 
     @Override

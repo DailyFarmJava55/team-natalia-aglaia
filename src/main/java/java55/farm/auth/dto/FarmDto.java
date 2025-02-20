@@ -6,17 +6,21 @@ import lombok.*;
 import java.util.Set;
 
 @Getter
+@Setter
 @NoArgsConstructor
-@AllArgsConstructor
-@Builder
 public class FarmDto extends AccountDto {
-    String login;
+
     Integer rating;
-    Language language;
     @Singular
     Set<OfferDto> offers;
     AddressDto address;
 
 
+    public FarmDto(String login, Language language, String telephone, Integer rating, Set<OfferDto> offers, AddressDto address) {
+        super(login, language, telephone);
+        this.rating = rating;
+        this.offers = offers;
+        this.address = address;
+    }
 }
 

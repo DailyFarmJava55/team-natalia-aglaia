@@ -6,7 +6,7 @@ import java55.farm.auth.dto.AddressDto;
 import java55.farm.auth.dto.OfferDto;
 import lombok.*;
 
-import java.util.Set;
+import java.util.*;
 
 @Getter
 @NoArgsConstructor
@@ -14,15 +14,14 @@ import java.util.Set;
 @Entity
 public class Farm extends Account {
     Integer rating;
-    Language language;
     @Singular
     Set<Offer> offers;
     Address address;
 
-    public Farm(String login, Integer rating, Language language, Address address) {
-        super(login);
-        this.rating = rating;
-        this.language = language;
+    public Farm(String login, String password, Language language, Address address) {
+        super(login, password, language, new ArrayList<>(List.of(Role.FARMER)));
+        offers = new HashSet<>();
+        rating = 0;
         this.address = address;
     }
 }

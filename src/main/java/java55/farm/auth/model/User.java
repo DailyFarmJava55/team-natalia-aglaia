@@ -4,6 +4,10 @@ import jakarta.persistence.Entity;
 import java55.farm.auth.dto.AccountDto;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+
 @Getter
 @NoArgsConstructor
 @Setter
@@ -11,11 +15,10 @@ import lombok.*;
 public class User extends Account {
 
     String telephone;
-    Language language;
 
-    public User(String login, String telephone, Language language) {
-        super(login);
+    public User(String login, String password, Language language, String telephone) {
+        super(login, password, language, new ArrayList<>(List.of(Role.USER)) {
+        });
         this.telephone = telephone;
-        this.language = language;
     }
 }
