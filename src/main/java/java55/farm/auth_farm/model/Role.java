@@ -1,4 +1,4 @@
-package java55.farm.auth.model;
+package java55.farm.auth_farm.model;
 
 public enum Role {
     FARMER,

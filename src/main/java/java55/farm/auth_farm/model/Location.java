@@ -1,19 +1,16 @@
-package java55.farm.auth.dto;
+package java55.farm.auth_farm.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.Locale;
-
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class UserRegisterDto {
-    String login;
-    String password;
-    String telephone;
-    Locale language;
+public class Location {
+
+    double latitude;
+    double longitude;
 }

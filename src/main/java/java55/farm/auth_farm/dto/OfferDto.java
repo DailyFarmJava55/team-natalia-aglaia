@@ -1,4 +1,4 @@
-package java55.farm.auth.dto;
+package java55.farm.auth_farm.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

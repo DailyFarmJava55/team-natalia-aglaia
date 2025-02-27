@@ -1,4 +1,4 @@
-package java55.farm.auth.model;
+package java55.farm.auth_farm.model;
 
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.Entity;

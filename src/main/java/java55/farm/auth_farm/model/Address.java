@@ -1,4 +1,4 @@
-package java55.farm.auth.model;
+package java55.farm.auth_farm.model;
 
 import jakarta.persistence.Embeddable;
 import lombok.*;
@@ -11,10 +11,10 @@ import java.io.Serializable;
 @EqualsAndHashCode
 @Embeddable
 public class Address implements Serializable {
+    String country;
     String city;
     String street;
-    int building;
-    double latitude;
-    double longitude;
+    String houseNumber;
+    String zipCode;
 
 }

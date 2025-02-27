@@ -1,5 +1,6 @@
-package java55.farm.auth.dto;
+package java55.farm.auth_farm.dto;
 
+import java55.farm.auth_farm.model.Location;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -12,10 +13,11 @@ import java.util.Locale;
 @AllArgsConstructor
 @Builder
 public class FarmRegisterDto {
-    String login;
+    String email;
+    String farmName;
     String password;
     Locale language;
-    AddressDto address;
+    Location location;
 
 }
 

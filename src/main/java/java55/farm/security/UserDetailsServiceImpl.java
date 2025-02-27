@@ -1,8 +1,7 @@
 package java55.farm.security;
 
-import java55.farm.auth.dao.AccountRepository;
-import java55.farm.auth.model.Account;
-import java55.farm.auth.model.Farm;
+import java55.farm.auth_farm.dao.FarmRepository;
+import java55.farm.auth_farm.model.Farm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;
@@ -17,11 +16,11 @@ import java.util.Collection;
 @Service
 @RequiredArgsConstructor
 public class UserDetailsServiceImpl implements UserDetailsService {
-    final AccountRepository accountRepository;
+    final FarmRepository farmRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Account account = accountRepository.findById(username)
+        Farm account = farmRepository.findById(username)
                 .orElseThrow(() -> new UsernameNotFoundException(username));
 
         System.out.println(account.getPassword());
