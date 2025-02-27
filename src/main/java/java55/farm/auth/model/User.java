@@ -7,6 +7,7 @@ import lombok.*;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 
 @Getter
 @NoArgsConstructor
@@ -16,7 +17,7 @@ public class User extends Account {
 
     String telephone;
 
-    public User(String login, String password, Language language, String telephone) {
+    public User(String login, String password, Locale language, String telephone) {
         super(login, password, language, new ArrayList<>(List.of(Role.USER)) {
         });
         this.telephone = telephone;

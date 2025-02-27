@@ -37,6 +37,7 @@ public class AuthController {
 
     @GetMapping ("/user/{id}")
     public UserDto getUserInfo (@RequestParam String id) {
+        authService.getUserInfo (id);
         return authService.getUserInfo (id);
     }
 

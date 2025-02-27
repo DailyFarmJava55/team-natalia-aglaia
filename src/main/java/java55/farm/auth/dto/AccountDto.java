@@ -1,7 +1,8 @@
 package java55.farm.auth.dto;
 
-import java55.farm.auth.model.Language;
 import lombok.*;
+
+import java.util.Locale;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -11,6 +12,6 @@ import lombok.*;
 
 public class AccountDto {
     String login;
-    Language language;
+    Locale language;
     String telephone;
 }

@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 
 @Entity
@@ -19,7 +20,7 @@ public abstract class Account {
     String login;
     @Setter
     String password;
-    Language language;
+    Locale locale;
     List<Role> roles;
 
 }

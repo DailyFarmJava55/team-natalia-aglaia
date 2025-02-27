@@ -18,7 +18,7 @@ public class Farm extends Account {
     Set<Offer> offers;
     Address address;
 
-    public Farm(String login, String password, Language language, Address address) {
+    public Farm(String login, String password, Locale language, Address address) {
         super(login, password, language, new ArrayList<>(List.of(Role.FARMER)));
         offers = new HashSet<>();
         rating = 0;
