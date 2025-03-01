@@ -13,25 +13,27 @@ import org.springframework.stereotype.Service;
 import java.util.Collection;
 
 
-@Service
-@RequiredArgsConstructor
-public class UserDetailsServiceImpl implements UserDetailsService {
-    final FarmRepository farmRepository;
-
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Farm account = farmRepository.findById(username)
-                .orElseThrow(() -> new UsernameNotFoundException(username));
-
-        System.out.println(account.getPassword());
-        Collection<String> authorities = account.getRoles().stream().map(r -> "ROLE_" + r.name()).toList();
-
-        return new User(
-                username,
-                account.getPassword(),
-                AuthorityUtils.createAuthorityList(authorities)
-        );
-    }
+//@Service
+//@RequiredArgsConstructor
+public class UserDetailsServiceImpl
+//        implements UserDetailsService
+        {
+//    final FarmRepository farmRepository;
+//
+//    @Override
+//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//        Farm farm = farmRepository.findById(username)
+//                .orElseThrow(() -> new UsernameNotFoundException(username));
+//
+//        System.out.println(farm.getPassword());
+//        Collection<String> authorities = farm.getRoles().stream().map(r -> "ROLE_" + r.name()).toList();
+//
+//        return new User(
+//                username,
+//                farm.getPassword(),
+//                AuthorityUtils.createAuthorityList(authorities)
+//        );
+//    }
 
 }
 

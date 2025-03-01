@@ -8,14 +8,16 @@ import java.util.Locale;
 import java.util.Set;
 
 @Getter
+@ToString
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class FarmDto  {
-     String email;
-     String farmName;
-     Role role;
-    Locale language;
+    Long id;
+    String email;
+    String farmName;
+    Set<Role> roles;
+    Locale locale;
     Location location;
     Integer rating;
     @Singular

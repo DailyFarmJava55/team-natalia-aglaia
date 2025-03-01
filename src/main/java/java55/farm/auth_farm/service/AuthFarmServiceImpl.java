@@ -17,7 +17,7 @@ public class AuthFarmServiceImpl implements AuthFarmService {
 
     @Override
     public FarmDto registerFarm(FarmRegisterDto farmRegisterDto) {
-        if (farmRepository.existsById(farmRegisterDto.getEmail())){
+        if (farmRepository.existsByEmail(farmRegisterDto.getEmail())){
             return null;
         }
         Farm farm = modelMapper.map(farmRegisterDto, Farm.class);
@@ -27,16 +27,39 @@ public class AuthFarmServiceImpl implements AuthFarmService {
 
     @Transactional(readOnly = true)
     @Override
-    public FarmDto getFarmInfo(String id) {
-        Farm farm = farmRepository.findById(id).orElseThrow(AccountNotFoundException::new);
+    public FarmDto getFarmInfoByEmail(String email) {
+        Farm farm = farmRepository.findByEmail(email).orElseThrow(AccountNotFoundException::new);
         return modelMapper.map(farm, FarmDto.class);
 
     }
 
     @Override
-    public FarmDto updateFarmInfo(String id, FarmRegisterDto farmRegisterDto) {
-        //TODO
-        return null;
+    public FarmDto updateFarmInfoByEmail(String email, FarmUpdateDto farmUpdateDto) {
+        Farm farm = farmRepository.findByEmail(email).orElseThrow(AccountNotFoundException::new);
+        if(farmUpdateDto.getEmail() != null) farm.setEmail(farmUpdateDto.getEmail());
+        if(farmUpdateDto.getFarmName() != null) farm.setEmail(farmUpdateDto.getFarmName());
+        if(farmUpdateDto.getLocation() != null) farm.setLocation(farmUpdateDto.getLocation());
+
+        return modelMapper.map(farm, FarmDto.class);
+
+    }
+
+    @Override
+    public FarmDto getFarmInfoById(String id) {
+
+        Farm farm = farmRepository.findById(id).orElseThrow(AccountNotFoundException::new);
+        return modelMapper.map(farm, FarmDto.class);
+    }
+
+    @Override
+    public FarmDto updateFarmInfoById(String id, FarmUpdateDto farmUpdateDto) {
+
+        Farm farm = farmRepository.findById(id).orElseThrow(AccountNotFoundException::new);
+        if(farmUpdateDto.getEmail() != null) farm.setEmail(farmUpdateDto.getEmail());
+        if(farmUpdateDto.getFarmName() != null) farm.setEmail(farmUpdateDto.getFarmName());
+        if(farmUpdateDto.getLocation() != null) farm.setLocation(farmUpdateDto.getLocation());
+
+        return modelMapper.map(farm, FarmDto.class);
     }
 
 

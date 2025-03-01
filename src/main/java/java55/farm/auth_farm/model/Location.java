@@ -1,16 +1,17 @@
 package java55.farm.auth_farm.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
 
-@Getter
+import java.io.Serializable;
+
+@Embeddable
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class Location {
-
+@Getter
+@Setter
+@EqualsAndHashCode
+public class Location implements Serializable {
     double latitude;
     double longitude;
 }

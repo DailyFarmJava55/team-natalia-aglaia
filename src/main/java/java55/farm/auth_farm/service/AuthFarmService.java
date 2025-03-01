@@ -5,8 +5,11 @@ import java55.farm.auth_farm.dto.*;
 public interface AuthFarmService {
     FarmDto registerFarm(FarmRegisterDto farmRegisterDto);
 
-    FarmDto getFarmInfo(String id);
+    FarmDto getFarmInfoByEmail(String id);
 
-    FarmDto updateFarmInfo(String id, FarmRegisterDto farmRegisterDto);
+    FarmDto updateFarmInfoByEmail(String id, FarmUpdateDto farmUpdateDto);
 
+    FarmDto getFarmInfoById(String id);
+
+    FarmDto updateFarmInfoById(String id, FarmUpdateDto farmRegisterDto);
 }

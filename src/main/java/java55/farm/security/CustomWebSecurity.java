@@ -6,10 +6,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 
-@Service("webSecurity")
-@RequiredArgsConstructor
+//@Service("webSecurity")
+//@RequiredArgsConstructor
 public class CustomWebSecurity {
-    final FarmRepository farmRepository;
+//    final FarmRepository farmRepository;
 
 
 //    public boolean checkPostAuthor(String postId, String userName) {

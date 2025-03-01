@@ -15,7 +15,7 @@ import org.springframework.security.web.access.expression.WebExpressionAuthoriza
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
-    final CustomWebSecurity webSecurity;
+//    final CustomWebSecurity webSecurity;
 
 
     @Bean

@@ -1,28 +1,50 @@
 package java55.farm.auth_farm.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.*;
 
 @Getter
+@ToString
 @NoArgsConstructor
 @Setter
 @Entity
-public class Farm  {
+@Table(indexes = {
+        @Index(name = "email_inx", columnList = "email")
+})
 
+public class Farm  {
     @Id
-    String login;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(unique = true)
+    String email;
+
     @Setter
     String password;
+
+    String farmName;
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    Set<Role> roles;
+
     Locale locale;
-    List<Role> roles;
+
+    @Embedded
+    Location location;
 
     Integer rating;
+
     @Singular
     Set<Offer> offers;
-    Address address;
 
+    {
+        roles = new HashSet<>();
+        roles.add(Role.FARMER);
+
+        rating = 0;
+    }
 }
 

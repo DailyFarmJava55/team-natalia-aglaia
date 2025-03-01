@@ -9,14 +9,10 @@ import java.util.Locale;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class FarmRegisterDto {
+public class FarmUpdateDto {
     String email;
-    String password;
     String farmName;
     Location location;
-    @Setter
-    Locale locale;
-
 
 }
 
