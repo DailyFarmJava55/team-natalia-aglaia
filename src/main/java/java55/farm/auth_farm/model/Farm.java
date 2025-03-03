@@ -1,6 +1,7 @@
 package java55.farm.auth_farm.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 import java.util.*;

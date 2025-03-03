@@ -1,15 +1,22 @@
 package java55.farm.auth_farm.controller;
 
+import jakarta.validation.Valid;
 import java55.farm.auth_farm.dto.FarmDto;
 import java55.farm.auth_farm.dto.FarmRegisterDto;
 import java55.farm.auth_farm.dto.FarmUpdateDto;
 import java55.farm.auth_farm.service.AuthFarmService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.http.HttpStatus;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 @RestController
 @RequestMapping ("/api/auth/farm")
@@ -19,7 +26,7 @@ public class AuthController {
 
     @PostMapping("/register")
     public FarmDto registerFarm (
-            @RequestBody FarmRegisterDto farmRegisterDto
+            @RequestBody @Validated FarmRegisterDto farmRegisterDto
 //            ,@RequestHeader(value = "Accept-Language", defaultValue = "en-US") String localeHeader
     ){
 //        Locale locale = Locale.forLanguageTag(localeHeader);
@@ -69,5 +76,18 @@ public class AuthController {
 //    public boolean deleteAccount (@RequestParam String id) {
 //        return authService.deleteAccount (id);
 //    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public Map<String, String> handleValidationExceptions(
+            MethodArgumentNotValidException ex) {
+        Map<String, String> errors = new HashMap<>();
+        ex.getBindingResult().getAllErrors().forEach((error) -> {
+            String fieldName = ((FieldError) error).getField();
+            String errorMessage = error.getDefaultMessage();
+            errors.put(fieldName, errorMessage);
+        });
+        return errors;
+    }
 
 }
