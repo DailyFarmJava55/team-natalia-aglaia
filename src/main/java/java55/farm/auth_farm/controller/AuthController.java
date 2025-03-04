@@ -1,6 +1,5 @@
 package java55.farm.auth_farm.controller;
 
-import jakarta.validation.Valid;
 import java55.farm.auth_farm.dto.FarmDto;
 import java55.farm.auth_farm.dto.FarmRegisterDto;
 import java55.farm.auth_farm.dto.FarmUpdateDto;
@@ -22,7 +21,7 @@ import java.util.Map;
 @RequestMapping ("/api/auth/farm")
 @RequiredArgsConstructor
 public class AuthController {
-    final AuthFarmService authService;
+    final AuthFarmService authFarmService;
 
     @PostMapping("/register")
     public FarmDto registerFarm (
@@ -33,14 +32,15 @@ public class AuthController {
         //todo Сделать с фильтрами/ подключить конфиг
         Locale locale = LocaleContextHolder.getLocale();
         farmRegisterDto.setLocale(locale);
-        return authService.registerFarm (farmRegisterDto);
+        return authFarmService.registerFarm (farmRegisterDto);
     }
 
     @PostMapping("/login")
     public FarmDto login(Principal principal){
+        String name = principal.getName();
 //        return authService.getFarmDto (principal.getName());
         // TODO login
-        return null;
+        return authFarmService.getFarmInfoByEmail(name);
     }
 
 
@@ -53,22 +53,22 @@ public class AuthController {
 
     @GetMapping ("/get/id/{id}")
     public FarmDto getFarmInfoById(@PathVariable String id) {
-        return authService.getFarmInfoById(id);
+        return authFarmService.getFarmInfoById(id);
     }
 
     @PutMapping ("/edit/id/{id}")
     public FarmDto updateFarmInfoById (@PathVariable String id, @RequestBody FarmUpdateDto farmRegisterDto) {
-        return authService.updateFarmInfoById (id, farmRegisterDto);
+        return authFarmService.updateFarmInfoById (id, farmRegisterDto);
     }
 
     @GetMapping ("/get/email/{email}")
     public FarmDto getFarmInfoByEmail(@PathVariable String email) {
-        return authService.getFarmInfoByEmail(email);
+        return authFarmService.getFarmInfoByEmail(email);
     }
 
     @PutMapping ("/edit/email/{email}")
     public FarmDto updateFarmInfoByEmail (@PathVariable String email, @RequestBody FarmUpdateDto farmRegisterDto) {
-        return authService.updateFarmInfoByEmail(email, farmRegisterDto);
+        return authFarmService.updateFarmInfoByEmail(email, farmRegisterDto);
     }
 
 

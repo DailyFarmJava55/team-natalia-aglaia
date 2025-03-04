@@ -17,14 +17,17 @@ import org.springframework.security.web.access.expression.WebExpressionAuthoriza
 public class SecurityConfig {
 //    final CustomWebSecurity webSecurity;
 
+    //https://www.baeldung.com/spring-security-login
+
 
     @Bean
-    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.httpBasic(Customizer.withDefaults());
         http.csrf(csrf -> csrf.disable());
         http.authorizeHttpRequests(authorize -> authorize
-                .anyRequest().permitAll()
-//                .anyRequest().authenticated()
+                .requestMatchers("/api/auth/farm/register", "/api/auth/farm/get/**")
+                .permitAll()
+                .anyRequest().authenticated()
         );
 
         return http.build();
