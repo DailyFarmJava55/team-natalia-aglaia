@@ -40,17 +40,6 @@ public class AuthFarmServiceImpl implements AuthFarmService {
     }
 
     @Override
-    public FarmDto updateFarmInfoByEmail(String email, FarmUpdateDto farmUpdateDto) {
-        Farm farm = farmRepository.findByEmail(email).orElseThrow(FarmNotFoundException::new);
-        if(farmUpdateDto.getEmail() != null) farm.setEmail(farmUpdateDto.getEmail());
-        if(farmUpdateDto.getFarmName() != null) farm.setEmail(farmUpdateDto.getFarmName());
-        if(farmUpdateDto.getLocation() != null) farm.setLocation(farmUpdateDto.getLocation());
-
-        return modelMapper.map(farm, FarmDto.class);
-
-    }
-
-    @Override
     public FarmDto getFarmInfoById(String id) {
 
         Farm farm = farmRepository.findById(id).orElseThrow(FarmNotFoundException::new);
@@ -59,12 +48,11 @@ public class AuthFarmServiceImpl implements AuthFarmService {
 
     @Override
     public FarmDto updateFarmInfoById(String id, FarmUpdateDto farmUpdateDto) {
-
         Farm farm = farmRepository.findById(id).orElseThrow(FarmNotFoundException::new);
         if(farmUpdateDto.getEmail() != null) farm.setEmail(farmUpdateDto.getEmail());
-        if(farmUpdateDto.getFarmName() != null) farm.setEmail(farmUpdateDto.getFarmName());
+        if(farmUpdateDto.getFarmName() != null) farm.setFarmName(farmUpdateDto.getFarmName());
         if(farmUpdateDto.getLocation() != null) farm.setLocation(farmUpdateDto.getLocation());
-
+        farmRepository.save(farm);
         return modelMapper.map(farm, FarmDto.class);
     }
 

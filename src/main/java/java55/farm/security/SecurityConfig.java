@@ -15,7 +15,7 @@ import org.springframework.security.web.access.expression.WebExpressionAuthoriza
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
-//    final CustomWebSecurity webSecurity;
+    final CustomWebSecurity webSecurity;
 
     //https://www.baeldung.com/spring-security-login
 
@@ -25,10 +25,13 @@ public class SecurityConfig {
         http.httpBasic(Customizer.withDefaults());
         http.csrf(csrf -> csrf.disable());
         http.authorizeHttpRequests(authorize -> authorize
-                .requestMatchers("/api/auth/farm/register", "/api/auth/farm/login", "/api/auth/farm/get/**")
-                .permitAll()
+                .requestMatchers("/api/auth/farm/register", "/api/auth/farm/get/**")
+                    .permitAll()
                 .requestMatchers(HttpMethod.PUT, "/api/auth/farm/{login}")
-                .access(new WebExpressionAuthorizationManager("#login == authentication.name"))
+                    .access(new WebExpressionAuthorizationManager("#login == authentication.name"))
+                .requestMatchers(HttpMethod.PUT,"/api/auth/farm/edit/id/{id}")
+                    .access((authentication, context) -> new AuthorizationDecision(
+                        webSecurity.checkFarmLoginById(context.getVariables().get("id"), authentication.get().getName())))
 
 //                .anyRequest().authenticated()
         );

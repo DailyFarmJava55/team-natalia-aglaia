@@ -14,11 +14,8 @@ public class CustomWebSecurity {
     final FarmRepository farmRepository;
 
 
-    public boolean checkProfileOwner(String offerid, String farmEmail) {
-//        Farm farm = farmRepository.findById(farmId).orElse(null);
-//        return farm != null && farm.getEmail().equalsIgnoreCase(farmEmail);
-        //todo получить оффер и проверить, что он соотваетствует автору.
-        // В данный момент не используется
-        return true;
+    public boolean checkFarmLoginById(String farmId, String login) {
+        Farm farm = farmRepository.findById(farmId).orElse(null);
+        return farm != null && farm.getEmail().equalsIgnoreCase(login);
     }
 }

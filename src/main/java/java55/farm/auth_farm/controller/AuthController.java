@@ -38,8 +38,7 @@ public class AuthController {
     @PostMapping("/login")
     public FarmDto login(Principal principal){
         String name = principal.getName();
-//        return authService.getFarmDto (principal.getName());
-        // TODO login
+        System.out.println("log: principal.getName() = "+name);
         return authFarmService.getFarmInfoByEmail(name);
     }
 
@@ -64,11 +63,6 @@ public class AuthController {
     @GetMapping ("/get/email/{email}")
     public FarmDto getFarmInfoByEmail(@PathVariable String email) {
         return authFarmService.getFarmInfoByEmail(email);
-    }
-
-    @PutMapping ("/edit/email/{email}")
-    public FarmDto updateFarmInfoByEmail (@PathVariable String email, @RequestBody FarmUpdateDto farmRegisterDto) {
-        return authFarmService.updateFarmInfoByEmail(email, farmRegisterDto);
     }
 
 
