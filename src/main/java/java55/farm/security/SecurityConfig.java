@@ -25,9 +25,12 @@ public class SecurityConfig {
         http.httpBasic(Customizer.withDefaults());
         http.csrf(csrf -> csrf.disable());
         http.authorizeHttpRequests(authorize -> authorize
-                .requestMatchers("/api/auth/farm/register", "/api/auth/farm/get/**")
+                .requestMatchers("/api/auth/farm/register", "/api/auth/farm/login", "/api/auth/farm/get/**")
                 .permitAll()
-                .anyRequest().authenticated()
+                .requestMatchers(HttpMethod.PUT, "/api/auth/farm/{login}")
+                .access(new WebExpressionAuthorizationManager("#login == authentication.name"))
+
+//                .anyRequest().authenticated()
         );
 
         return http.build();

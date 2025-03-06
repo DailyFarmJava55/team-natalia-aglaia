@@ -12,28 +12,26 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 
+// реализация запроса на /login
+@Service
+@RequiredArgsConstructor
+public class UserDetailsServiceImpl implements UserDetailsService {
+    final FarmRepository farmRepository;
 
-//@Service
-//@RequiredArgsConstructor
-public class UserDetailsServiceImpl
-//        implements UserDetailsService
-        {
-//    final FarmRepository farmRepository;
-//
-//    @Override
-//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//        Farm farm = farmRepository.findById(username)
-//                .orElseThrow(() -> new UsernameNotFoundException(username));
-//
-//        System.out.println(farm.getPassword());
-//        Collection<String> authorities = farm.getRoles().stream().map(r -> "ROLE_" + r.name()).toList();
-//
-//        return new User(
-//                username,
-//                farm.getPassword(),
-//                AuthorityUtils.createAuthorityList(authorities)
-//        );
-//    }
+    @Override
+    public UserDetails loadUserByUsername(String farmEmail) throws UsernameNotFoundException {
+        Farm farm = farmRepository.findByEmail(farmEmail)
+                .orElseThrow(() -> new UsernameNotFoundException(farmEmail));
+
+        System.out.println("log password: " + farm.getPassword());
+        Collection<String> authorities = farm.getRoles().stream().map(r -> "ROLE_" + r.name()).toList();
+
+        return new User(
+                farmEmail,
+                farm.getPassword(),
+                AuthorityUtils.createAuthorityList(authorities)
+        );
+    }
 
 }
 
