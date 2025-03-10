@@ -16,11 +16,14 @@ public class FarmRegisterDto {
     @NotBlank(message = "Email is mandatory")
     @Email
     String email;
+
     String password;
 
     @NotBlank(message = "Name is mandatory")
     String farmName;
+
     Location location;
+
     @Setter
     Locale locale;
 

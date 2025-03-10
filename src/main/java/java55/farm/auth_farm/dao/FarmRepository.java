@@ -7,6 +7,5 @@ import java.util.Optional;
 public interface FarmRepository extends JpaRepository<Farm, String> {
 
     boolean existsByEmail(String email);
-
     Optional<Farm> findByEmail(String email);
 }

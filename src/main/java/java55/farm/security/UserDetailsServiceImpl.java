@@ -17,6 +17,7 @@ import java.util.Collection;
 @RequiredArgsConstructor
 public class UserDetailsServiceImpl implements UserDetailsService {
     final FarmRepository farmRepository;
+    // todo delete roles
 
     @Override
     public UserDetails loadUserByUsername(String farmEmail) throws UsernameNotFoundException {
