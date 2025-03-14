@@ -1,6 +1,7 @@
 package telran.java55.auth.controller;
 
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.web.bind.annotation.*;
 import telran.java55.auth.service.AuthenticationService;
 

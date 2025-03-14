@@ -1,6 +1,7 @@
 package telran.java55.auth.model;
 
 import jakarta.persistence.Column;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,8 +18,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -29,13 +30,20 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-	public String getEmail() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Enumerated(EnumType.STRING)  
+    @Column(nullable = false)
+    private Role role = Role.USER;
 
-	public String getPassword() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Column(updatable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdAt;
+
+    @PrePersist
+    protected void onCreate() {
+        createdAt = new Date(); 
+    }
+
+    public void setEmail(String email) {
+        this.email = email.toLowerCase(); 
+    }
 }
